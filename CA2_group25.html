@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>CA2 Project by Yaseen Rahman & Zehad</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Chart.js only once (use latest stable) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+        .chart-container {
+            width: 90%;
+            max-width: 700px;
+            height: 400px;          
+            margin: 40px auto;      
+        }
+        h2 {
+            margin: 40px 0 20px;
+            color: #333;
+        }
+        header, article {
+            margin-bottom: 60px;    
+        }
+    </style>
+</head>
+<body>
+
+    <header id="Home">
+        <nav class="navigation">
+            <ul>
+                <li><a href="#Home">MAIN</a></li>
+                <li><a href="#About">Cars Data</a></li>
+                <li><a href="#Contact">Charts</a></li>
+            </ul>
+        </nav>
+        <div class="Home-text">
+            <h1 class="mono">Car Data</h1>
+            <p class="desc">Project Made by Yaseen Rahman, Zehad</p>
+        </div>
+        <div class="image-present">
+            <img src="Homepage Main.jpg" alt="picture of a car" class="white"/>
+            <div class="text-container">
+                <p class="present">For this project we selected an available dataset from <a href="https://www.kaggle.com/" class="button" target="_blank">Kaggle.com</a></p>
+                <p>Our objective was to analyse the dataset, create a machine learning linear regression graph, and display our work in this website</p>
+            </div>
+        </div>
+
+        
+        <div class="chart-container">
+            <h2>Car Body Types</h2>
+            <canvas id="doughnutChart"></canvas>
+        </div>
+
+        <script>
+            const doughnutData = {
+                labels: ['SUV', 'Sedan', 'Hatchback', 'Coupe', 'MUV', 'Convertible', 'Pickup Truck', 'Wagon', 'Luxury', 'Hybrid', 'Minivan'],
+                datasets: [{
+                    label: 'Count',
+                    data: [84, 43, 26, 22, 9, 8, 4, 2, 2, 1, 1],
+                    backgroundColor: ['#4dc9f1', '#f67019', '#f53794', '#537bc4', '#acc236', 
+                                      '#166a8f', '#00a950', '#58595b', '#8549ba', '#f0a30a', '#007bff']
+                }]
+            };
+
+            new Chart(document.getElementById('doughnutChart'), {
+                type: 'doughnut',
+                data: doughnutData
+            });
+        </script>
+        <div class="text-container">
+                <p>in this chart we can see visually that SUV dominates this dataset, followed by sedan and hatchback. This particular stat can mean that the target marked of the cars of this dataset was for families. </p>
+    </header>
+
+    <article>
+        <h2>Transmission Types Distribution</h2>
+        <div class="chart-container">
+            <canvas id="transmissionChart"></canvas>
+        </div>
+
+        <script>
+            const ctx = document.getElementById('transmissionChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Electric', 'Manual', 'Automatic'],
+                    datasets: [{
+                        label: 'Total',
+                        data: [25, 45, 165],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 99, 132, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 99, 132)'
+                        ],
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        barThickness: 50
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'top' },
+                        title: {
+                            display: true,
+                            text: 'Transmission Types',
+                            font: { size: 18 }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Total' },
+                            max: 180,
+                            ticks: { stepSize: 20 }
+                        },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+        </script>
+        <div class="text-container">
+                <p>we can see a very high dominance of automatic cars. Which fits the target of families, because automatic makes driving easier and relatively safer.</p>
+    </article>
+<article>
+    
+
+    
+    <h2>Fuel Types Distribution</h2>
+    <div class="chart-container">
+        <canvas id="fuelChart"></canvas>
+    </div>
+
+    <script>
+        const fuelData = {
+            labels: ['Petrol', 'Diesel', 'Electric', 'CNG'],
+            datasets: [{
+                label: 'Count',
+                data: [150, 60, 15, 10],  
+                backgroundColor: [
+                    '#007bff',      
+                    '#fd7e14',      
+                    '#6c757d',      
+                    '#ffc107'       
+                ],
+                borderColor: [
+                    '#0056b3',
+                    '#c45c00',
+                    '#495057',
+                    '#cc9a06'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        new Chart(document.getElementById('fuelChart'), {
+            type: 'doughnut',
+            data: fuelData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: { font: { size: 14 } }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Fuel Types',
+                        font: { size: 20 },
+                        padding: { top: 10, bottom: 20 }
+                    }
+                },
+                cutout: '60%'  
+            }
+        });
+    </script>
+    <div class="text-container">
+                <p>One type is dominating the chart (petrol), meaning, dataset is displaying cars with a cheaper maintanance. </p>
+<footer>
+    <div class="image-present">
+            <img src="Screenshot 2026-02-27 001241.png" alt="a linear regression" class="white"/>
+            <div class="text-container">
+                <p class="present">But the presence of the scatter points, alters the slope of the line. The scatter points can be explained by saying that there are expectations, for example an old car might have hight torque but since of the year its starting price won't relate to the graph. 
+</footer>
+</article>
+</body>
+</html>

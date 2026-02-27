@@ -1,0 +1,17 @@
+body {background-color: rgb(180, 201, 198)}
+
+.Home-text {background-color: antiquewhite;text-align: center;}
+
+.navigation {background-color: #0aaa5a;padding: 15px;}
+.navigation ul {list-style: none;display: flex; justify-content: right; margin: 0; padding: 0;}
+.navigation li {margin: 0 130px;}
+.navigation li:hover {background-color: aqua;}
+.navigation a {color: aliceblue;}
+
+.mono {color: rgb(7, 8, 6);}
+.desc {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+.image-present {display: flex; align-items: center; justify-content: space-between; gap: 20px;}
+.white {width: 800px;border-radius: 5%;box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);}
+.text-container {background-color: bisque;border-radius: 3%; margin-top: 30px; text-align: left;}
+.car {background-color: rgb(73, 193, 209); width: 100%; max-width: 900px;padding: 12px 20px;
+    margin: 0 auto 20px; text-align: center; padding: 1px;}
